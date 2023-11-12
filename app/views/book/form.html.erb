@@ -1,0 +1,75 @@
+<div class="section">
+    <div class="content-center">
+        <h1>NEW OR UPDATE</h1>
+    </div>
+    <div class="content-center">
+        <%= render "layouts/error_messages" %>
+        <%= form_with(model: @book, url: create_or_update_book_index_path, method: :post, html: { id: 'bookForm' }) do |f| %>
+            <%= f.hidden_field :id, value: @book_id.nil? ? '' : @book_id, autofocus: false%>
+
+            <div class="field">
+                <%= f.label :author %>
+                <% if @author.present? %>
+                    <%= f.select :author_id do 
+                        @author.each do |author|
+                            concat content_tag(:option, author.name, value: author.id.to_i)
+                        end
+                    end %>
+                <% else %>
+                    <%= f.select :author_id, options_for_select([], []) %>
+                <% end %>
+            </div>
+
+            <div class="field">
+                <%= f.label :title %>
+                <%= f.text_field :title %>
+            </div>
+
+            <div class="field">
+                <%= f.label :description %>
+                <%= f.text_field :description %>
+            </div>
+
+            <div class="field">
+                <%= f.label :tgl_publish %>
+                <%= f.date_field :tgl_publish %>
+            </div>
+
+            <div class="field">
+                <%= f.label :tgl_release %>
+                <%= f.date_field :tgl_release %>
+            </div>
+
+            <div class="field">
+                <%= f.label :total_page %>
+                <%= f.number_field :total_page, id: "totalPageInput", value: 0 %>
+            </div>
+
+            <div class="field">
+                <%= f.label :type_book %>
+                <%= f.text_field :type_book %>
+            </div>
+
+            <%= link_to 'Cancel', book_index_url, class: "btn-danger" %>
+            <button class="actions btn-success" onclick="validateTotalPage()">
+                Submit
+            </button>
+        <% end %>
+    </div>
+</div>
+
+<script>
+    function validateTotalPage() {
+        var totalPageInput = document.getElementById('totalPageInput');
+        var totalPageValue = parseInt(totalPageInput.value, 10);
+
+        if (isNaN(totalPageValue)) {
+            alert('Please enter a valid integer for Total Page.');
+            return;
+        }
+
+        totalPageInput.value = totalPageValue;
+
+        document.getElementById('bookForm').submit();
+    }
+</script>

@@ -1,0 +1,59 @@
+<div class="section">
+    <div class="content-center">
+        <h1>List Book Data</h1>
+    </div>
+
+    <div class="position-right"><%= link_to 'New Book', form_book_index_path, class: "btn-info" %></div>
+    <div class="table">
+        <div>
+            <%= form_tag(book_index_path, method: :get, id: 'paginate-book') do %>
+                <%= select_tag :max_pages, options_for_select([1, 50, 100].map { |value| [value, value] }, params[:max_pages].to_i), include_blank: "Select Max Pages", id: 'selected_limit_data', onchange: "changeLimitPage()" %>
+            <% end %>
+        </div>
+        <div class="content-center">
+            <table class="responsive-table">
+                <thead>
+                    <tr>
+                        <td scope="col">No</td>
+                        <td scope="col">UID</td>
+                        <td scope="col">Author</td>
+                        <td scope="col">Title</td>
+                        <td scope="col">Description</td>
+                        <td scope="col">Publish Date</td>
+                        <td scope="col">Release Date</td>
+                        <td scope="col">Total Page</td>
+                        <td scope="col">Type Book</td>
+                        <td scope="col">Action</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% @books.each_with_index do |book, index| %>
+                        <tr>
+                            <td data-title="no"><%= index + 1 %></td>
+                            <td data-title="data"><%= book.present? ? book.uid : '' %></td>
+                            <td data-title="data"><%= book.present? ? book.title : '' %></td>
+                            <td data-title="data"><%= book.present? ? book.authors.name : '' %></td>
+                            <td data-title="data"><%= book.present? ? book.description : '' %></td>
+                            <td data-title="data"><%= book.present? ? book.tgl_publish : '' %></td>
+                            <td data-title="data"><%= book.present? ? book.tgl_release : '' %></td>
+                            <td data-title="data"><%= book.present? ? book.total_page : '' %></td>
+                            <td data-title="data"><%= book.present? ? book.type_book : '' %></td>
+                            <td data-title="data">
+                                <%= button_to "Delete", book, method: :delete, class: "remove-button btn-danger", data: { confirm: 'Are you sure?' } %>
+                            </td>
+                        </tr>
+                    <% end %>
+                </tbody>
+            </table>
+            <div>
+                <%= paginate @books, max_pages: params[:max_pages].to_i %>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+  function changeLimitPage(){
+    var limit = document.getElementById('selected_limit_data')
+    document.getElementById('paginate-book').submit()
+  }
+</script>

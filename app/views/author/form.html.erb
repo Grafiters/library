@@ -1,0 +1,19 @@
+<div class="section">
+    <div class="content-center">
+        <h1>NEW OR UPDATE</h1>
+    </div>
+    <div class="content-center">
+        <%= form_with(model: @author, url: create_or_update_author_index_path, method: :post) do |f| %>
+            <%= f.hidden_field :id, value: @author_data.nil? ? '' : @author_data, autofocus: false%>
+            <div class="field">
+                <%= f.label :name %>
+                <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
+            </div>
+
+            <%= link_to 'Cancel', author_index_url, class: "btn-danger" %>
+            <button class="actions btn-success">
+                Submit
+            </button>
+        <% end %>
+    </div>
+</div>

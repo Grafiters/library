@@ -1,0 +1,32 @@
+<div class="section">
+    <div class="content-center">
+        <h1>List Author Data</h1>
+    </div>
+
+    <div class="position-right"><%= link_to 'New Author', form_author_index_path %></div>
+    <div class="table">
+        <div class="content-center">
+            <table class="responsive-table">
+                <thead>
+                    <tr>
+                        <td scope="col">No</td>
+                        <td scope="col">UID</td>
+                        <td scope="col">Name</td>
+                        <td scope="col">Created</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% @authors.each_with_index do |author, index| %>
+                        <tr>
+                            <td data-title="no"><%= index + 1 %></td>
+                            <td data-title="username"><%= author.present? ? author.uid : '' %></td>
+                            <td data-title="username"><%= author.present? ? author.name : '' %></td>
+                            <td data-title="username"><%= author.present? ? author.created_at : '' %></td>
+                        </tr>
+                    <% end %>
+                </tbody>
+            </table>
+            
+        </div>
+    </div>
+</div>

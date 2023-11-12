@@ -1,0 +1,30 @@
+<div class="section">
+    <div class="content-center">
+        <table class="responsive-table">
+            <thead>
+                <tr>
+                    <td scope="col">No</td>
+                    <td scope="col">Username</td>
+                    <td scope="col">Email</td>
+                    <td scope="col">Role</td>
+                    <td scope="col">Signin At</td>
+                    <td scope="col">Last Signin</td>
+                    <td scope="col">Count Session</td>
+                </tr>
+            </thead>
+            <tbody>
+                <% @users.each_with_index do |user, index| %>
+                    <tr>
+                        <td data-title="no"><%= index + 1 %></td>
+                        <td data-title="username"><%= user.present? ? user.username : '' %></td>
+                        <td data-title="email"><%= user.present? ? user.email : '' %></td>
+                        <td data-title="role"><%= user.present? ? user.role : '' %></td>
+                        <td data-title="singin"><%= user.present? ? user.current_sign_in_at : '' %></td>
+                        <td data-title="last"><%= user.present? ? user.last_sign_in_at : '' %></td>
+                        <td data-title="session"><%= user.present? ? user.sign_in_count : '' %></td>
+                    </tr>
+                <% end %>
+            </tbody>
+       </table>
+    </div>
+</div>

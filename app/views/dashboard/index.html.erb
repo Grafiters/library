@@ -1,0 +1,15 @@
+<div class="section">
+    <div class="content-center">
+        <h1>This IS My Dashboard</h1>
+    </div>
+    <div class="content-center">
+        <button class="btn-danger">danger</button>
+        <button class="btn-warning">warning</button>
+        <button class="btn-success">success</button>
+    </div>
+    <div class="table">
+        <%= @books.each do |book| %>
+            <%= book %>
+        <% end %>
+    </div>
+</div>
