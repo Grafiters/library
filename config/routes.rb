@@ -17,4 +17,11 @@ Rails.application.routes.draw do
       post 'create_or_update'
     end
   end
+  scope :api do
+    scope :v2 do
+      scope :books do
+        get '/', to: 'api/book#index'
+      end
+    end
+  end
 end
