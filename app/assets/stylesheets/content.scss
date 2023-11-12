@@ -1,0 +1,42 @@
+@import 'variables';
+
+body {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    background-color: $backgroud;
+}
+
+.container {
+    margin: 0 auto;
+    max-width: 1080px;
+    max-height: fit-content;
+    overflow: hidden;
+}
+
+.section {
+    display: grid;
+    place-items: center;
+    padding: 2rem 3rem;
+    margin: 0 auto;
+    max-width: 1080px;
+    max-height: fit-content;
+    overflow: hidden;
+    background-color: $white;
+}
+
+.content-center {
+    text-align: center;
+}
+
+.position-left {
+    float: left;
+}
+
+.position-right {
+    float: right;
+}
+
+.position-center {
+    float: center;
+}

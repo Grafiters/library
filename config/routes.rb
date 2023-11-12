@@ -1,6 +1,20 @@
 Rails.application.routes.draw do
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  devise_for :users
+  root "dashboard#index"
+  get 'dashboard/index'
 
-  # Defines the root path route ("/")
-  # root "articles#index"
+  resources :user
+  resources :author do
+    collection do
+      get 'form'
+      post 'create_or_update'
+    end
+  end
+
+  resources :book, except: [:show] do
+    collection do
+      get 'form'
+      post 'create_or_update'
+    end
+  end
 end

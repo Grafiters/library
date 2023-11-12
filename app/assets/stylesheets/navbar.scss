@@ -1,0 +1,40 @@
+.navbar {
+    background-color: #333;
+    overflow: hidden;
+    margin-bottom: 2.5rem;
+}
+
+.navbar ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+.navbar ul li {
+    display: inline;
+}
+
+.navbar ul li a {
+    display: inline-block;
+    padding: 20px;
+    color: white;
+    text-decoration: none;
+}
+
+.navbar ul li a:hover {
+    background-color: #555;
+}
+
+.navbar-button {
+    display: inline-block;
+    padding: 20px;
+    color: white;
+    text-decoration: none;
+    background-color: #333;
+}
+
+.navbar-button:hover {
+    color: white;
+    background-color: #555;
+}

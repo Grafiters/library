@@ -1,0 +1,81 @@
+@import 'variables';
+
+button:hover {
+    opacity: 0.7;
+}
+
+.btn-danger {
+    text-decoration: none;
+    color: $white;
+    background-color: $red;
+    border: none;
+    padding: 7px 15px;
+    font-size: 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    outline: none;
+}
+
+.btn-success {
+    text-decoration: none;
+    color: $white;
+    background-color: $green;
+    border: none;
+    padding: 7px 15px;
+    font-size: 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    outline: none;
+}
+
+.btn-warning {
+    text-decoration: none;
+    color: $black;
+    background-color: $yellow;
+    border: none;
+    padding: 7px 15px;
+    font-size: 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    outline: none;
+}
+
+.btn-info {
+    text-decoration: none;
+    color: $white;
+    background-color: $blue;
+    border: none;
+    padding: 7px 15px;
+    font-size: 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    outline: none;
+}
+
+.btn-default {
+    text-decoration: none;
+    color: $black;
+    border: 1px;
+    padding: 7px 15px;
+    font-size: 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    background-color: $white;
+    outline: none;
+}
+
+.remove-button {
+    font-size: 12px;
+
+    text-decoration: none;
+    color: $white;
+    opacity: 1;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
