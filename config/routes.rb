@@ -1,7 +1,10 @@
+require 'sidekiq/web'
 Rails.application.routes.draw do
   devise_for :users
   root "dashboard#index"
   get 'dashboard/index'
+
+  mount Sidekiq::Web => '/sidekiq'
 
   resources :user
   resources :author do

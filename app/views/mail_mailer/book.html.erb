@@ -1,0 +1,9 @@
+<!-- app/views/book_mailer/new_book_notification.text.erb -->
+New Book Notification
+
+Dear <%= @user_data[:username] %>,
+
+We're excited to inform you about the new book: <%= @content['title'] %>.
+<p>Check it out <a href="<%= ENV.fetch('BASE_URL') %>/book">here</a>.</p>
+
+Thanks for using our service!

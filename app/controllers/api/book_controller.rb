@@ -2,6 +2,7 @@ class Api::BookController < ApplicationController
     def index
         default_params
 
+        validation_params(params, nil, params_type)
         author = Author.find_by(uid: params[:author_uid]) unless params[:author_uid].nil?
         return render json: { error: 422, message: "Author not found" } unless params[:author_uid].nil? && author.present?
         

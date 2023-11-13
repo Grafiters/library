@@ -24,12 +24,18 @@ class BookController < ApplicationController
 
     def create_or_update
         convert_params
-        validation_params(params, required_params)
+        validation_params(params, required_params, nil)
         @author = Author.all
 
         author = Author.find_by(id: params[:author_id])
         if author.blank?
             flash[:error] = "Author not found"
+        end
+
+        validate_book = Book.find_by(book_params)
+        unless validate_book.blank?
+            flash[:error] = "Book already exists"
+            return render :form, status: 422
         end
 
         book = params[:id] != '' ? Book.find(params[:id]) : Book.new

@@ -7,7 +7,16 @@ class User < ApplicationRecord
   validates :username, :password, presence: true
   validates :email, presence: true, uniqueness: true, format: { with: URI::MailTo::EMAIL_REGEXP }
 
+  scope :user, -> { where(role: 'user' )}
+
   before_validation :add_role_user
+
+  def as_json_email
+    {
+      email: email,
+      username: username
+    }
+  end
 
   private
 
