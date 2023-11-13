@@ -38,14 +38,14 @@ class BookController < ApplicationController
             return render :form, status: 422
         end
 
-        book = params[:id] != '' ? Book.find(params[:id]) : Book.new
-        if params[:id] && Book.blank?
+        book = params[:id].present? && params[:id] != '' ? Book.find(params[:id]) : Book.new
+        if params[:id].present? && params[:id] && Book.blank?
             flash[:error] = "Book not found"
             return render :form, status: 422
         end
 
-        if params[:id] != '' && Book.update(book_params)
-            redirect_to book_index_url, notice: 'Book was successfully saved.', status: 201
+        if params[:id].present? && params[:id] != '' && Book.update(book_params)
+            redirect_to book_index_url, notice: 'Book was successfully saved.'
         else 
             book = Book.new(book_params)
             if book.save
@@ -56,6 +56,7 @@ class BookController < ApplicationController
             end
         end
     rescue ArgumentError => e
+        puts e.inspect
         @author = Author.all
         flash[:error] = e
         return render :form, status: 422
@@ -73,11 +74,6 @@ class BookController < ApplicationController
     end
 
     private
-
-    def paginate(limit = 1, page = 1)
-        
-    end
-
     def convert_params
         params[:author_id] = params[:author_id].to_i
         params[:total_page] = params[:total_page].to_i

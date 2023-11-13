@@ -30,12 +30,15 @@ gem 'grape-swagger'
 gem 'grape-swagger-entity'
 gem 'grape_logging'
 gem 'devise'
-# gem "redis", "~> 4.0"
+gem "redis"
+gem 'factory_bot_rails'
+  gem 'database_cleaner'
 # gem "kredis"
 # gem "image_processing", "~> 1.2"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
+  gem 'rspec-rails'
   gem "debug", platforms: %i[ mri mingw x64_mingw ]
 end
 
@@ -52,7 +55,8 @@ end
 
 group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
-  gem "capybara"
-  gem "selenium-webdriver"
+    gem 'rspec-rails'
+    gem "capybara"
+    gem "selenium-webdriver"
 
 end
