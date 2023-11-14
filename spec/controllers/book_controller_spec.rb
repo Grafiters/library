@@ -7,6 +7,7 @@ RSpec.describe BookController, type: :controller do
           username { 'testing' }
           email { 'test@example.com' }
           password { 'password' }
+          role { 'admin' }
       end
   end
 
