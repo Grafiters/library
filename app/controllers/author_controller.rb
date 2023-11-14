@@ -1,5 +1,6 @@
 class AuthorController < ApplicationController
     before_action :authenticate_user!, only: [:form, :create_or_update, :show, :destroy]
+    before_action :admin_permission!, only: [:form, :create_or_update, :show, :destroy]
 
     def index
         @authors = Author.all

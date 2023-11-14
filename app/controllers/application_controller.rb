@@ -14,6 +14,12 @@ class ApplicationController < ActionController::Base
         }
     end
 
+    def admin_permission!
+        unless current_user.role == 'admin'
+            render json: { message: "You don't have permission to perform this action." }, status: 403 and return false
+        end
+    end
+
     protected
 
     def configure_permitted_parameters
